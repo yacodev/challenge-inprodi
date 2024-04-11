@@ -12,21 +12,22 @@ import { InputForm, TypeDataUser, TypeInput } from '../InputForm';
 
 const defaultValuesUpdateUser = {
   name: '',
-  latitude: 0,
-  longitude: 0,
+  latitude: '',
+  longitude: '',
 };
 
 export const UserModal = ({
   openModal,
   onCloseModal,
   onUpdate,
+  onCreate,
   user,
   userId,
 }: UserModalProps) => {
   const schema = yup.object().shape({
     name: yup.string().required(),
-    latitude: yup.number().required(),
-    longitude: yup.number().required(),
+    latitude: yup.string().required(),
+    longitude: yup.string().required(),
   });
 
   const {
@@ -49,8 +50,11 @@ export const UserModal = ({
   }, [user]);
 
   const onSubmit = async (data: UserForm) => {
-    if (!userId) return;
-
+    if (!userId) {
+      onCreate(data);
+      willCloseModal();
+      return;
+    }
     onUpdate(data);
     willCloseModal();
   };
@@ -59,6 +63,9 @@ export const UserModal = ({
     reset();
     onCloseModal();
   };
+
+  const isUpdateUserProcess = userId !== null;
+  const textButton = isUpdateUserProcess ? 'Actualizar' : 'Crear';
 
   return (
     <Modal
@@ -117,7 +124,7 @@ export const UserModal = ({
               </Grid>
               <Grid item>
                 <Button type='submit' variant='contained'>
-                  Actualizar
+                  {textButton}
                 </Button>
               </Grid>
             </Grid>

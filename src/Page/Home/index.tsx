@@ -7,9 +7,14 @@ import { User } from '../../models/userModel';
 import { useState } from 'react';
 import { UserCardContainer } from './styles';
 import { UserForm, UserModal } from '../../Components/UserModal';
-import { updateUser, deleteUser } from '../../store/slices/user/userSlice';
+import {
+  updateUser,
+  deleteUser,
+  addUser,
+} from '../../store/slices/user/userSlice';
 import { WarningModal } from '../../Components/WarningModal/WarningModal';
 import IconButton from '@mui/material/IconButton';
+import { getNewId } from '../../utils/getNewId';
 
 export const HomePage = () => {
   const userList = useSelector<StateSelector>((state) => state.user) as User[];
@@ -17,16 +22,25 @@ export const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showWarningModal, setShowWarningModal] = useState(false);
   const [userIdSelected, setUserIdSelected] = useState<number | null>(null);
-  const [userToUpdate, setUserToUpdate] = useState<User | null>(null);
+  const [userToUpdate, setUserToUpdate] = useState<UserForm | null>(null);
 
-  const onCloseModal = () => setShowModal(false);
+  const onCloseModal = () => {
+    setShowModal(false);
+    setUserIdSelected(null);
+    setUserToUpdate(null);
+  };
   const onOpenModal = () => setShowModal(true);
 
   const handleSetUserToUpdate = (userId: number) => {
     setUserIdSelected(userId);
     const userSelected = userList.find((user) => user.id === userId);
     if (!userSelected) return;
-    setUserToUpdate(userSelected);
+    const userFormatted = {
+      name: userSelected.name,
+      latitude: userSelected.latitude.toString(),
+      longitude: userSelected.longitude.toString(),
+    };
+    setUserToUpdate(userFormatted);
     onOpenModal();
   };
 
@@ -50,6 +64,16 @@ export const HomePage = () => {
     setShowWarningModal(false);
   };
 
+  const onCreateUser = (user: UserForm) => {
+    const newId = getNewId();
+
+    const newUser = {
+      ...user,
+      id: newId,
+    };
+    dispatch(addUser(newUser));
+  };
+
   return (
     <>
       <HeaderPage />
@@ -65,8 +89,8 @@ export const HomePage = () => {
             key={user.id}
           />
         ))}
-        <IconButton>
-          <AddCircleIcon />
+        <IconButton color='primary' size='large' onClick={onOpenModal}>
+          <AddCircleIcon fontSize='large' />
         </IconButton>
       </UserCardContainer>
 
@@ -74,6 +98,7 @@ export const HomePage = () => {
         openModal={showModal}
         onCloseModal={onCloseModal}
         onUpdate={onUpdateUser}
+        onCreate={onCreateUser}
         userId={userIdSelected}
         user={userToUpdate}
       />
