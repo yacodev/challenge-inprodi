@@ -7,11 +7,12 @@ import Button from '@mui/material/Button';
 import { UserCardProps } from './types';
 
 export const UserCard = ({
+  id,
   name,
   latitude,
   longitude,
-  onEdit,
   onDelete,
+  onUpdate,
 }: UserCardProps) => {
   return (
     <Card sx={{ width: '240px' }}>
@@ -37,11 +38,11 @@ export const UserCard = ({
           </Grid>
           <Grid item xs={12}>
             <Grid container justifyContent='center' gap={1} mt={2}>
-              <Button variant='contained' onClick={onEdit}>
+              <Button variant='contained' onClick={() => onUpdate(id)}>
                 {' '}
                 Editar{' '}
               </Button>
-              <Button variant='outlined' onClick={onDelete}>
+              <Button variant='outlined' onClick={() => onDelete(id)}>
                 {' '}
                 Eliminar{' '}
               </Button>
