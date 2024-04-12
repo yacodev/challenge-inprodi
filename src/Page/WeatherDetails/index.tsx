@@ -36,7 +36,6 @@ export const WeatherDetails = () => {
     setUserInformation(newUserInformation);
   }, [userList, id]);
 
-  console.log({ userInformation });
   const { todayWeather, forecastWeather, isLoading } = useWeather({
     lat: user?.latitude,
     lng: user?.longitude,

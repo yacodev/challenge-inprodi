@@ -11,8 +11,7 @@ export function useWeather({ lat, lng }: UseWeatherProps) {
     WeatherObject[] | null
   >(null);
   const endDate = getEndDate();
-  console.log('Aqui');
-  const { data, isLoading } = useQuery({
+  const { isLoading } = useQuery({
     queryKey: [Queries.getWeather, lat, lng],
     queryFn: () =>
       weatherServices.getTodayWeather({
@@ -27,8 +26,6 @@ export function useWeather({ lat, lng }: UseWeatherProps) {
       throw new Error('Error al obtener el clima');
     },
     onSuccess: (data: WeatherResponse) => {
-      console.log('Aqui2');
-      console.log({ data });
       const newTodayWeather = data.hours[0];
       setTodayWeather(newTodayWeather);
       setForecastWeather(data.hours);
@@ -36,8 +33,6 @@ export function useWeather({ lat, lng }: UseWeatherProps) {
     enabled: !!lat && !!lng,
     retry: false,
   });
-
-  console.log('test', data);
 
   return {
     todayWeather,

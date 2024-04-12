@@ -39,21 +39,21 @@ export const UserCard = ({
             <Grid item xs={8}>
               <Typography>{longitude}</Typography>
             </Grid>
-            <Grid item xs={12}>
-              <Grid container justifyContent='center' gap={1} mt={2}>
-                <Button variant='contained' onClick={() => onUpdate(id)}>
-                  {' '}
-                  Editar{' '}
-                </Button>
-                <Button variant='outlined' onClick={() => onDelete(id)}>
-                  {' '}
-                  Eliminar{' '}
-                </Button>
-              </Grid>
-            </Grid>
           </Grid>
         </CardContent>
       </CardActionArea>
+      <Grid container mb={2}>
+        <Grid item xs={12}>
+          <Grid container justifyContent='center' gap={1} mt={2}>
+            <Button variant='contained' onClick={() => onUpdate(id)}>
+              Editar
+            </Button>
+            <Button variant='outlined' onClick={() => onDelete(id)}>
+              Eliminar
+            </Button>
+          </Grid>
+        </Grid>
+      </Grid>
     </Card>
   );
 };
