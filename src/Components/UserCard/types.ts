@@ -1,8 +1,9 @@
 export interface UserCardProps {
   id: number;
   name: string;
-  latitude: number;
-  longitude: number;
+  latitude: string;
+  longitude: string;
   onDelete: (userId: number) => void;
   onUpdate: (userId: number) => void;
+  onWeather: (userId: number) => void;
 }

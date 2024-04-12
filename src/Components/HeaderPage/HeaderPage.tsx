@@ -1,15 +1,20 @@
+import Grid from '@mui/material/Grid';
 import weatherIcon from '../../assets/weather-icon.svg';
-import './headerPage.scss';
+import { HeaderContainer, Title } from './styles';
 
 export const HeaderPage = () => {
   return (
-    <nav className='header__container'>
-      <div className='header__container--logo'>
-        <img src={weatherIcon} alt='logo' />
-      </div>
-      <div className='header__container--title'>
-        <span className='header__container--title-text'>Weather App</span>
-      </div>
-    </nav>
+    <>
+      <HeaderContainer container>
+        <Grid item xs={4}>
+          <Grid container justifyContent='center'>
+            <img src={weatherIcon} alt='logo' width='70px' />
+          </Grid>
+        </Grid>
+        <Grid xs={7}>
+          <Title>Weather App</Title>
+        </Grid>
+      </HeaderContainer>
+    </>
   );
 };

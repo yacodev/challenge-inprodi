@@ -15,10 +15,12 @@ import {
 import { WarningModal } from '../../Components/WarningModal/WarningModal';
 import IconButton from '@mui/material/IconButton';
 import { getNewId } from '../../utils/getNewId';
+import { useNavigate } from 'react-router-dom';
 
 export const HomePage = () => {
   const userList = useSelector<StateSelector>((state) => state.user) as User[];
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [showWarningModal, setShowWarningModal] = useState(false);
   const [userIdSelected, setUserIdSelected] = useState<number | null>(null);
@@ -74,6 +76,9 @@ export const HomePage = () => {
     dispatch(addUser(newUser));
   };
 
+  const handleGoWeather = (id: number) => {
+    navigate(`/user/${id}`);
+  };
   return (
     <>
       <HeaderPage />
@@ -86,6 +91,7 @@ export const HomePage = () => {
             id={user.id}
             onDelete={handleUserDelete}
             onUpdate={handleSetUserToUpdate}
+            onWeather={handleGoWeather}
             key={user.id}
           />
         ))}
