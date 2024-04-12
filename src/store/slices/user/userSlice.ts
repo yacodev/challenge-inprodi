@@ -4,33 +4,33 @@ import { User } from '../../../models/userModel';
 const initialState: User[] = [
   {
     id: 1,
-    name: 'Pedro Ramirez',
-    latitude: 20.6667,
-    longitude: -103.3333,
+    name: 'Luis Ramirez',
+    latitude: '20.6667',
+    longitude: '-103.3333',
   },
   {
     id: 2,
     name: 'Juan Perez',
-    latitude: 41.3888,
-    longitude: 2.159,
+    latitude: '41.3888',
+    longitude: '2.159',
   },
   {
     id: 3,
-    name: 'Luis Vera',
-    latitude: 40.7143,
-    longitude: -74.006,
+    name: 'Carlos Vera',
+    latitude: '40.7143',
+    longitude: '-74.006',
   },
   {
     id: 4,
-    name: 'Maria Velazquez',
-    latitude: -34.6132,
-    longitude: -58.3772,
+    name: 'Erika Velazquez',
+    latitude: '-34.6132',
+    longitude: '-58.3772',
   },
   {
     id: 5,
-    name: 'Ericka Sanchez',
-    latitude: 45.4112,
-    longitude: -75.6981,
+    name: 'Pao Lagos',
+    latitude: '45.4112',
+    longitude: '-75.6981',
   },
 ];
 
