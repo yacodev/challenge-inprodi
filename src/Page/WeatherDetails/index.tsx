@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 import { WeatherCard } from '../../Components/WeatherCard';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import Alert from '@mui/material/Alert';
 
 export const WeatherDetails = () => {
   const { id } = useParams();
@@ -36,11 +37,14 @@ export const WeatherDetails = () => {
     setUserInformation(newUserInformation);
   }, [userList, id]);
 
-  const { todayWeather, forecastWeather, isLoading } = useWeather({
-    lat: user?.latitude,
-    lng: user?.longitude,
-  });
+  const { todayWeather, forecastWeather, isLoading, requestError } = useWeather(
+    {
+      lat: user?.latitude,
+      lng: user?.longitude,
+    }
+  );
 
+  console.log({ requestError });
   const goBack = () => {
     navigate('/');
   };
@@ -56,23 +60,32 @@ export const WeatherDetails = () => {
             <Typography variant='body2'>Regresar</Typography>
           </Grid>
         </Grid>
-
-        {userInformation !== null && (
-          <Grid item xs={12} sm={4}>
-            <InformationCard
-              information={userInformation}
-              title='Información de usuario'
-            />
+        <Grid item xs={12}>
+          <Grid container justifyContent='center' gap={2}>
+            {userInformation !== null && (
+              <InformationCard
+                information={userInformation}
+                title='Información de usuario'
+              />
+            )}
+            <WeatherCard weather={todayWeather} title='Clima Hoy' />
           </Grid>
-        )}
-        <Grid item xs={12} sm={7}>
-          <WeatherCard weather={todayWeather} title='Clima Hoy' />
         </Grid>
+
         <Grid item xs={12}>
           <Typography variant='h6'>
             Pronostico del tiempo para los próximos 5 días
           </Typography>
         </Grid>
+
+        {requestError && (
+          <Grid item xs={12}>
+            <Alert variant='outlined' severity='error'>
+              Hubo un error al obtener el clima, la API solo permite 10
+              peticiones por día
+            </Alert>
+          </Grid>
+        )}
         <Grid item xs={12}>
           <ForecastWeatherTable
             rows={forecastWeather ?? []}

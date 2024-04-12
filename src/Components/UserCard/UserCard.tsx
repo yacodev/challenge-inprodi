@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 
 import { UserCardProps } from './types';
 
@@ -42,8 +43,10 @@ export const UserCard = ({
           </Grid>
         </CardContent>
       </CardActionArea>
+
       <Grid container mb={2}>
         <Grid item xs={12}>
+          <Divider />
           <Grid container justifyContent='center' gap={1} mt={2}>
             <Button variant='contained' onClick={() => onUpdate(id)}>
               Editar

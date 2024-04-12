@@ -4,17 +4,15 @@ import { HeaderContainer, Title } from './styles';
 
 export const HeaderPage = () => {
   return (
-    <>
-      <HeaderContainer container>
-        <Grid item xs={4}>
-          <Grid container justifyContent='center'>
-            <img src={weatherIcon} alt='logo' width='70px' />
-          </Grid>
+    <HeaderContainer container>
+      <Grid item xs={4}>
+        <Grid container justifyContent='center'>
+          <img src={weatherIcon} alt='logo' width='70px' />
         </Grid>
-        <Grid xs={7}>
-          <Title>Weather App</Title>
-        </Grid>
-      </HeaderContainer>
-    </>
+      </Grid>
+      <Grid item xs={7}>
+        <Title>Weather App</Title>
+      </Grid>
+    </HeaderContainer>
   );
 };

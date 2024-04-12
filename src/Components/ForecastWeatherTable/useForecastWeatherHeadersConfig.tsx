@@ -40,7 +40,7 @@ export const useForecastWeatherHeadersConfig = (): GridColDef[] => {
               variant='body2'
               sx={{ color: 'text.primary', fontWeight: 400 }}
             >
-              {row.airTemperature.noaa}
+              {row.airTemperature.noaa} °C
             </Typography>
           </Box>
         );
@@ -61,7 +61,7 @@ export const useForecastWeatherHeadersConfig = (): GridColDef[] => {
               variant='body2'
               sx={{ color: 'text.primary', fontWeight: 400 }}
             >
-              {row.humidity.noaa}
+              {row.humidity.noaa} %
             </Typography>
           </Box>
         );
@@ -75,7 +75,7 @@ export const useForecastWeatherHeadersConfig = (): GridColDef[] => {
       headerClassName: 'header-table-type-1',
       renderCell: (params: GridRenderCellParams) => (
         <Typography variant='body2' sx={{ color: 'text.primary' }}>
-          {params.row.windSpeed.noaa}
+          {params.row.windSpeed.noaa} m/s
         </Typography>
       ),
     },
