@@ -24,19 +24,19 @@ export const WeatherCard = ({ weather, title }: WeatherCardProps) => {
             <Typography>Temperatura:</Typography>
           </Grid>
           <Grid item xs={4}>
-            <Chip label={weather.airTemperature.noaa} color='primary' />
+            <Chip label={weather?.airTemperature.noaa} color='primary' />
           </Grid>
           <Grid item xs={7}>
             <Typography>Humedad:</Typography>
           </Grid>
           <Grid item xs={4}>
-            <Chip label={weather.humidity.noaa} color='primary' />
+            <Chip label={weather?.humidity.noaa} color='primary' />
           </Grid>
           <Grid item xs={7}>
             <Typography>Velocidad viento:</Typography>
           </Grid>
           <Grid item xs={4}>
-            <Chip label={weather.windSpeed.noaa} color='primary' />
+            <Chip label={weather?.windSpeed.noaa} color='primary' />
           </Grid>
         </Grid>
       </CardContent>

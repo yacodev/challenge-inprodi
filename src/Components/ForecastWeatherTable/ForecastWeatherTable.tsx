@@ -6,7 +6,6 @@ export const ForecastWeatherTable = ({
   rows,
   isLoading,
 }: ForecastWeatherTableProps) => {
-  console.log(rows);
   const headers = useForecastWeatherHeadersConfig();
 
   return (
