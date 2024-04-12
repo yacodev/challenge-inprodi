@@ -10,9 +10,9 @@ Herramientas que se utilizaron:
 Puedes acceder al link desplegado en: https://challenge-inprodi.vercel.app
 
 # Vistas de la APP:
-![vista-1 ](https://github.com/yacodev/challenge-inprodi/assets/6935006/43c8704a-8911-4a15-8bc6-47d580b476b2)
+![vista-1 ](https://github.com/yacodev/challenge-inprodi/assets/6935006/2c228d6f-21eb-4b9b-b668-c5e7e0fd8087")
 ![vista-2 ](https://github.com/yacodev/challenge-inprodi/assets/6935006/73c2bd87-be03-4e64-8b8b-5c810772e1fd)
-![vista-3 ](https://github.com/yacodev/challenge-inprodi/assets/6935006/7dd9f2e9-cc9e-446d-b5a1-ee3515abb182)
+![vista-3 ](https://github.com/yacodev/challenge-inprodi/assets/6935006/c2bcf8d5-89ee-4345-b382-0738651d4254)
 
 ## Explicación de la App
 
