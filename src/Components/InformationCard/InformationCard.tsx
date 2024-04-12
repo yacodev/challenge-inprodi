@@ -26,7 +26,7 @@ export const InformationCard = ({
           title={<Typography variant='h6'>{title}</Typography>}
         />
         <Grid container gap={1}>
-          <Grid xs={12}>
+          <Grid item xs={12}>
             <Divider />
           </Grid>
           {arrayKeys.map((key) => (
