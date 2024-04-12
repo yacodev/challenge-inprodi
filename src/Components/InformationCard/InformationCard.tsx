@@ -6,7 +6,6 @@ import Grid from '@mui/material/Grid';
 import Chip from '@mui/material/Chip';
 import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
-
 import { InformationCardProps } from './types';
 
 export const InformationCard = ({
@@ -36,7 +35,11 @@ export const InformationCard = ({
                 <Typography>{key}:</Typography>
               </Grid>
               <Grid item xs={8}>
-                <Chip label={information[key]} color='primary' />
+                <Chip
+                  label={information[key]}
+                  color='primary'
+                  style={{ width: '150px' }}
+                />
               </Grid>
             </Grid>
           ))}
